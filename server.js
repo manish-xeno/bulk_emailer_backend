@@ -10,32 +10,32 @@ app.use(bodyParser.json());
 
 // console.log(process.env.EMAIL_HOST_USER, process.env.EMAIL_HOST_PASSWORD)
 
-// const transporter = nodemailer.createTransport({
-//     host: "smpt.hostinger.com",
-//     secure: true, 
-//     secureConnection: false,
-//     tls: {
-//        ciphers: "SSLv3",
-//     },
-//     requireTLS: true,
-//     port: 465,
-//     debug: true,
-//     connectionTimeout: 10000,
-//     auth: {
-//         user: process.env.EMAIL_HOST_USER,
-//         pass: process.env.EMAIL_HOST_PASSWORD,
-//     },
-// });
-
-let transporter = nodemailer.createTransport({
-    host: "smtp.titan.email",
+const transporter = nodemailer.createTransport({
+    host: "smtp.hostinger.com",
+    secure: true, 
+    secureConnection: false,
+    tls: {
+       ciphers: "SSLv3",
+    },
+    requireTLS: true,
     port: 465,
-    secure: true,
+    debug: true,
+    connectionTimeout: 10000,
     auth: {
         user: process.env.EMAIL_HOST_USER,
         pass: process.env.EMAIL_HOST_PASSWORD,
     },
 });
+
+// let transporter = nodemailer.createTransport({
+//     host: "smtp.titan.email",
+//     port: 465,
+//     secure: true,
+//     auth: {
+//         user: process.env.EMAIL_HOST_USER,
+//         pass: process.env.EMAIL_HOST_PASSWORD,
+//     },
+// });
 
 
 app.post('/api/send-email', async (req, res) => {
