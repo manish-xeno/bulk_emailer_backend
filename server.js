@@ -40,7 +40,13 @@ const transporter = nodemailer.createTransport({
 
 app.post('/api/send-email', async (req, res) => {
     const { to, cc, bcc, subject, text } = req.body;
+    const password = req.query.password;
 
+    if(password != process.env.PASSWORD) {
+        console.log("Incorrect password");
+        req.status(401).send('Unauthorised Access')
+    }
+    
     const sender = {
         name: process.env.EMAIL_HOST_NAME,
         address: process.env.EMAIL_HOST_USER
