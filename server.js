@@ -45,6 +45,7 @@ app.post('/api/send-email', async (req, res) => {
     if(password != process.env.PASSWORD) {
         console.log("Incorrect password");
         req.status(401).send('Unauthorised Access')
+        return;
     }
     
     const sender = {
