@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     host: "smtp.hostinger.com",
     secure: true, 
-    secureConnection: false,
+    secureConnection: true,
     tls: {
        ciphers: "SSLv3",
     },
